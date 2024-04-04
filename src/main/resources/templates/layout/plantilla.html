@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head">
+        <title>Yellow Men Store</title>
+        <meta charset="UTF-8"/>
+        
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <link th:href="@{/css/estilos.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <header th:fragment="header" class="encabezado"> 
+            <nav class="navegacion">
+                <a class="logo-sobre-nosotros navegacion-link" th:href="@{/sobreNosotros/info}">[[#{plantilla.sobreNosotros}]]</a>
+                <ul class="menus">
+
+                    <li class="menus-link"><a class="navegacion-link" th:href="@{/categoria/listado}">[[#{plantilla.categoria}]]</a></li>
+                    <li class="menus-link"><a class="navegacion-link" th:href="@{/categoria2/vistaCategoria}">[[#{plantilla.categoria}]]2</a></li>
+                    <li class="menus-link"><a class="navegacion-link" th:href="@{/vistaProducto/vista}">[[#{producto.vermas}]]</a></li>
+                    <li class="menus-link"><a class="navegacion-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>
+                    <li class="menus-link"> <a class="navegacion-link" href="url"><img src="https://w7.pngwing.com/pngs/872/916/png-transparent-whatsapp-logo-whatsapp-computer-icons-telephone-call-whatsapp-grass-internet-mobile-phones-thumbnail.png" alt="alt" width="32"/></a></li>
+                    <li class="menus-link"><a class="navegacion-link" href="https://www.instagram.com/yellowmenstore/"><img src="https://w7.pngwing.com/pngs/648/943/png-transparent-instagram-logo-logo-instagram-computer-icons-camera-instagram-logo-text-trademark-magenta-thumbnail.png" alt="alt" width="32"/></a></li>
+                    <li class="menus-link"><a class="dropdown-item navegacion-link"  th:href="@{/(lang=es)}">ES</a></li>
+                    <li class="menus-link"><a class="dropdown-item navegacion-link" th:href="@{/(lang=en)}">EN</a></li>
+                    
+                </ul>
+                
+            </nav>
+            
+
+
+        </header>
+        
+
+    </body>
+</html>

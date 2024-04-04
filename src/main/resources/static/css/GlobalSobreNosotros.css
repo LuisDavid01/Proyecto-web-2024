@@ -1,0 +1,32 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 28 mar 2024, 5:18:08 p. m.
+    Author     : JOSEFU
+*/
+
+body {
+    margin: 0;
+    line-height: normal;
+  }
+  
+  :root {
+    /* fonts */
+    --font-josefin-sans: "Josefin Sans";
+  
+    /* font sizes */
+    --font-size-21xl: 40px;
+    --font-size-5xl: 24px;
+    --font-size-13xl: 32px;
+  
+    /* Colors */
+    --color-yellow: #ffff00;
+    --color-black: #000;
+  
+    /* Paddings */
+    --padding-sm: 14px;
+    --padding-5xl: 24px;
+    --padding-xl: 20px;
+  }

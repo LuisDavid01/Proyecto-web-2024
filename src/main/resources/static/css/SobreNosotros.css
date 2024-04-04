@@ -1,0 +1,352 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 28 mar 2024, 5:19:30 p. m.
+    Author     : JOSEFU
+*/
+.frame-child,
+.sobre-nosotros-child {
+  height: 199px;
+  width: 1920px;
+  position: relative;
+  background-color: #000;
+  display: none;
+  max-width: 100%;
+}
+.ym2-1-icon,
+.ym2-2-icon {
+  height: 124px;
+  position: relative;
+  object-fit: cover;
+}
+.ym2-1-icon {
+  width: 117px;
+  display: none;
+  min-height: 124px;
+}
+.ym2-2-icon {
+  flex: 1;
+  max-width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.frame1,
+.frame2,
+.ym2-1-parent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.ym2-1-parent {
+  align-self: stretch;
+  flex: 1;
+  background-image: url(./public/frame-3@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.frame1,
+.frame2 {
+  overflow: hidden;
+}
+.frame2 {
+  align-self: stretch;
+  flex: 1;
+  padding: 38px 0 0;
+  z-index: 4;
+}
+.frame1 {
+  height: 162px;
+  width: 117px;
+  flex-shrink: 0;
+  min-width: 117px;
+  z-index: 3;
+}
+.sobre-nosotros1 {
+  align-self: stretch;
+  height: 40px;
+  position: relative;
+  line-height: 47px;
+  display: inline-block;
+  flex-shrink: 0;
+  z-index: 3;
+}
+.rectangle-parent,
+.sobre-nosotros-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.sobre-nosotros-wrapper {
+  width: 273px;
+  flex-direction: column;
+  padding: 60px 0 0;
+  min-width: 273px;
+}
+.rectangle-parent {
+  align-self: stretch;
+  background-color: #000;
+  flex-direction: row;
+  padding: 0 48px 37px;
+  gap: 37px;
+  max-width: 100%;
+  z-index: 1;
+  text-align: left;
+  font-size: 40px;
+  color: #ffff00;
+  font-family: Josefin Sans;
+}
+.frame-item {
+  height: 881px;
+  width: 1934px;
+  position: relative;
+  background-color: #ffff00;
+  display: none;
+  max-width: 100%;
+}
+.blank-line,
+.quienes-somos {
+  margin: 0;
+}
+.somos-una-tienda {
+  margin: 0;
+  font-weight: 300;
+}
+.blank-line1,
+.blank-line2,
+.como-trabajamos {
+  margin: 0;
+}
+.nosotros-trabajamos-bajo {
+  font-weight: 300;
+}
+.tiempo-de-espera {
+  font-family: Josefin Sans;
+}
+.blank-line3,
+.nosotros-trabajamos-bajo-encar {
+  margin: 0;
+}
+.como-trabajamos-mayormente {
+  margin: 0;
+  font-weight: 300;
+}
+.blank-line4 {
+  margin: 0;
+}
+.quienes-somos-somos-container {
+  width: 1404px;
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  max-width: 100%;
+  z-index: 3;
+}
+.rectangle-group {
+  align-self: stretch;
+  background-color: #ffff00;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 35px 14px 39px;
+  box-sizing: border-box;
+  max-width: 100%;
+  text-align: left;
+  font-size: 40px;
+  color: black;
+  font-family: Josefin Sans;
+}
+.categorias {
+  align-self: stretch;
+  height: 40px;
+  position: relative;
+  line-height: 47px;
+  display: inline-block;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.categorias-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 24px 0 0;
+  box-sizing: border-box;
+  min-width: 146px;
+}
+.icbaseline-whatsapp-icon {
+  height: 88px;
+  width: 91px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.vector-icon {
+  width: 81px;
+  height: 76px;
+  position: relative;
+  cursor: pointer;
+}
+.vector-wrapper {
+  height: 82px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 6px 0 0;
+  box-sizing: border-box;
+}
+.component-1,
+.component-1-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.component-1 {
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 24px;
+  z-index: 5;
+}
+.component-1-wrapper {
+  align-self: stretch;
+  justify-content: flex-end;
+  padding: 0 27px 0 28px;
+  box-sizing: border-box;
+}
+.frame3,
+.logo-3-1 {
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.logo-3-1 {
+  align-self: stretch;
+  height: 499px;
+  position: relative;
+  max-width: 100%;
+  object-fit: cover;
+}
+.frame3 {
+  width: 499px;
+  margin: 0 !important;
+  position: absolute;
+  top: 0;
+  left: -68px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 56px 0 0;
+  box-sizing: border-box;
+  gap: 310px;
+  z-index: 3;
+}
+.frame-inner {
+  height: 199px;
+  flex: 1;
+  position: relative;
+  background-color: #ffff00;
+  max-width: 100%;
+}
+.frame4 {
+  align-self: stretch;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  max-width: 100%;
+  z-index: 4;
+}
+.frame,
+.frame-parent,
+.sobre-nosotros {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.frame-parent {
+  width: 404px;
+  height: 1024px;
+  margin: 0 !important;
+  position: absolute;
+  top: 0;
+  left: 1486px;
+  flex-direction: row;
+  max-width: 100%;
+}
+.frame,
+.sobre-nosotros {
+  position: relative;
+  overflow: hidden;
+}
+.frame {
+  width: 1934px;
+  flex-shrink: 0;
+  flex-direction: column;
+  padding: 0 14px 0 0;
+  box-sizing: border-box;
+  z-index: 2;
+  text-align: left;
+  font-size: 40px;
+  color: #ffff00;
+  font-family: Josefin Sans;
+}
+.sobre-nosotros {
+  width: 100%;
+  background-color: #fff;
+  flex-direction: row;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 900px) {
+  .quienes-somos-somos-container,
+  .sobre-nosotros1 {
+    font-size: 32px;
+  }
+  .rectangle-group {
+    padding-top: 23px;
+    padding-bottom: 25px;
+    box-sizing: border-box;
+  }
+  .categorias {
+    font-size: 32px;
+  }
+}
+@media screen and (max-width: 675px) {
+  .frame1,
+  .sobre-nosotros-wrapper {
+    flex: 1;
+  }
+  .rectangle-parent {
+    flex-wrap: wrap;
+    gap: 37px 18px;
+    padding-left: 24px;
+    padding-right:24px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .quienes-somos-somos-container,
+  .sobre-nosotros1 {
+    font-size: 24px;
+  }
+  .rectangle-group {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+  }
+ .categorias{
+      font-size: 24px;
+      
+  }
+  
+  

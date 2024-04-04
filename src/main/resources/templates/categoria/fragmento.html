@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Yellow Men Store</title>
+        <meta charset="UTF-8"/>
+        
+        
+        
+    </head>
+    <body>
+     <!--Conseguir categorias-->
+     <section  th:fragment="listaCategorias">
+         <div class="listaCategoria">
+                <div  th:each="c : ${categorias}"> 
+                    <div>
+                        <h4><a class="navegacion-categoria-link" th:href="@{/producto/listado}">[[${c.nombreCategoria}]]</a></h4>
+                    </div>
+                </div>
+
+
+            </div>
+     </section>
+            
+    </body>
+</html>

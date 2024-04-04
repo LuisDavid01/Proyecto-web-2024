@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Yellow Men Store</title>
+        <meta charset="UTF-8"/>
+        
+        
+        
+    </head>
+    <body>
+     <!--Conseguir productos-->
+     <section  th:fragment="listaProductos">
+         <div class="listaCategoria">
+                <div  th:each="p : ${productos}"> 
+                    <div>
+                        <h4>[[${p.nombreProducto}]]</h4>
+                        <img th:src="${p.rutaImagen}"  
+                             height="200" 
+                             alt="alt"/>
+                        <p>[[#{producto.talla}]]: [[${p.tallaProducto}]] <br/>
+                            [[#{producto.precio}]]: ₡[[${p.precio}]]</p>
+                        <a class="navegacion-link" th:href="@{/vistaProducto/vista}">[[#{producto.vermas}]]</a>
+                    </div>
+                </div>
+
+
+            </div>
+     </section>
+            
+    </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>  
+<html xmlns ="http://www.w3.org/1999/xhtml"
+   xmlns:th ="http://www.thymeleaft.org">  
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Tienda de Productos</title>
+         <link th:href="@{/css/estilosVistaProducto.css}" rel="stylesheet" />
+         
+    </head>  
+    <body>
+       <header>
+            <div class="black-bar">
+                <div class="logo">
+                    <img src="../img/ym2-2-icon.png" alt=""/>
+                    <a th:href="@{/}"><img src="../img/ym2-2-icon.png" alt="Logo"/></a>
+                </div>
+                <div class="menu">
+                    <a th:href="@{/sobreNosotros/info}">Sobre Nosotros</a>
+                </div>
+                <div class="social-icons">
+                    <a th:href="@{/categoria/listado}">Categorias</a>
+                    <a href="#"><img src="/img/VectorWhatsapp.png" alt="Whatsapp"/></a>
+                    <a href="https://www.instagram.com/yellowmenstore/"><img src="instagram.png" alt="Instagram"/></a>
+                </div>
+            </div>
+            <div class="yellow-black-section">
+                <div class="yellow-content">
+                    <div class="article-container">
+                        
+                        <!-- Imagen del artículo -->
+                        <div class="article-image">
+                            <img src="ruta/a/la/imagen.jpg" alt="Descripción de la imagen"/>
+                        </div>
+                        <!-- Contenido del artículo -->
+                        <div class="article-content">
+                            <h1>Bienvenidos a Yellow Men Store</h1>
+                            <h2>Artículo Seleccionado</h2>
+                            <p>Descripción del artículo seleccionado...</p>
+                            <p>Precio: $XX.XX</p>
+                            <p>Talla: M</p>
+                            <p>Categoría: Ropa</p>
+                            <p>ID: 12345</p>
+
+                            <div class="article-content-extras">
+                                <h2>Mira mas productos</h2>
+                                <div class="product-box">
+                                    <img src="ruta/a/la/imagen1.jpg" alt="Producto 1"/>
+                                    <p>Producto 1</p>
+                                </div>
+                                <div class="product-box">
+                                    <img src="../img/VectorWhatsapp.png" alt="Producto 2"/> 
+                                    <p>Producto 2</p>
+                                </div>
+                                <div class="product-box">
+                                    <img src="../img/VectorWhatsapp.png" alt="Producto 3"/> 
+                                    <p>Producto 3</p>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="right-section">
+                    <h2>¿Desea adquirir este artículo?</h2>
+                    <p>Si deseas adquirir este artículo nos puedes contactar mediante los enlaces de abajo y te atenderemos con la mayor brevedad posible. Recuerda enviar una captura de pantalla del artículo de tu interés o mencionar el ID del artículo que deseas adquirir.</p>
+                    <!-- Enlaces de texto para WhatsApp e Instagram -->
+                    <a href="https://api.whatsapp.com/send?phone=TUNUMERODEWHATSAPP" target="_blank" style="display: block; color: black; text-decoration: none; font-weight: bold; margin-bottom: 10px;">Contactar por WhatsApp</a>
+                    <a href="https://www.instagram.com/yellowmenstore/" target="_blank" style="display: block; color: black; text-decoration: none; font-weight: bold;">Contactar por Instagram</a>
+                </div>
+
+
+            </div>
+
+        </header>
+        <footer>
+            <!-- Contenido del pie de página -->
+        </footer>  
+    </body>  
+</html>
+
+
+
+
+
+
+

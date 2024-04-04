@@ -1,0 +1,150 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Mar 26, 2024, 12:52:40 PM
+    Author     : Alonso Muñoz Aguilar
+*/
+
+/* Estilos para la barra negra */
+.black-bar {
+    background-color: black;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+    margin-bottom: 0px;
+}
+.black-bar .logo{
+    color: white;
+    text-decoration: none;
+}
+
+.black-bar .logo img {
+    height: 40px;
+    color: white;
+    text-decoration: none;
+}
+
+.black-bar .menu a {
+    margin-right: 1000px;
+    color: yellow;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+
+/* Estilos para la sección amarilla y negra */
+.yellow-black-section {
+    height: 120vh; 
+    background: linear-gradient(to right, black 50%, yellow 50%);
+    color: yellow;
+    padding: 50px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+
+/* Estilos para la sección de categorías */
+.categories-section {
+    padding: 20px;
+}
+
+.categories-section h2 {
+    color: black;
+}
+
+.categories-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.categories-section li {
+    margin-bottom: 10px;
+}
+
+.categories-section li a {
+    color: black;
+}
+
+/* Estilos para los iconos sociales */
+.black-bar .social-icons {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+}
+
+.black-bar .social-icons a {
+    margin-right: 6px;
+    text-decoration: none;
+    color: yellow;
+    font-size: 16px;
+}
+
+/* Fondo amarillo para toda la página */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: yellow;
+}
+
+/* Estilos para la sección de texto en la parte derecha */
+.right-section {
+    flex: 1; 
+    margin-left: 330px; 
+    margin-right: 50px;
+    color: black;
+}
+
+/* Estilos para los párrafos dentro de la sección de texto en la parte derecha */
+.right-section p {
+    color: black; 
+    font-size: 16px; 
+}
+
+/* Estilos para el contenedor del artículo */
+.article-container {
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 20px; 
+}
+
+/* Estilos para la imagen del artículo */
+.article-image {
+    width: 200px; 
+    height: auto; 
+    margin-right: 20px; 
+    margin-bottom: 300px;
+}
+
+/* Estilos para el contenido del artículo */
+.article-content {
+    flex: 1;
+}
+.article-content-extras {
+    margin-left: 10px;
+    margin-right: 50px;
+}
+.article-content-title {
+    text-align: left;
+}
+
+.product-box {
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 150px; 
+    text-align: center;
+}
+
+.product-box img {
+    width: 100px;
+    height: auto;
+}
+
