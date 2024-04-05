@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns ="http://www.w3.org/1999/xhtml"
+   xmlns:th ="http://www.thymeleaft.org" >
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <script th:src="@{/js/rutinas.js}"></script>
     <link href="/css/AdminGlobal.css" rel="stylesheet" type="text/css"/>
     <link href="/css/Admin.css" rel="stylesheet" type="text/css"/>
     
@@ -21,7 +22,7 @@
         <header class="admin-vista-cliente">
           <div class="admin-vista-cliente-child"></div>
           <b class="bienvenido-admin">Bienvenido admin</b>
-          <b class="vista-cliente">Vista Cliente</b>
+          <a  th:href="@{/}"><b class="vista-cliente">Vista Cliente</b></a>
         </header>
       </div>
       <main class="frame-parent">

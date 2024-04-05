@@ -10,21 +10,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta charset="UTF-8"/>
         
         
-        
+
     </head>
     <body>
-     <!--Conseguir categorias-->
-     <section  th:fragment="listaCategorias">
-         <div class="listaCategoria">
+        <!--Conseguir categorias-->
+        <section  th:fragment="listaCategorias">
+            <div class="listaCategoria">
                 <div  th:each="c : ${categorias}"> 
                     <div>
                         <h4><a class="navegacion-categoria-link" th:href="@{/producto/listado}">[[${c.nombreCategoria}]]</a></h4>
+                        <a th:href="@{/categoria/modificar/}+${c.idCategoria}"
+                           class="btn btn-success">
+                            <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a>
                     </div>
                 </div>
 
 
             </div>
-     </section>
-            
+        </section>
+
     </body>
 </html>

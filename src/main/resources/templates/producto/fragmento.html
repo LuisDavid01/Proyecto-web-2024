@@ -16,6 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
      <!--Conseguir productos-->
      <section  th:fragment="listaProductos">
          <div class="listaCategoria">
+             <div th:if="${productos != null and !productos.empty}">
                 <div  th:each="p : ${productos}"> 
                     <div>
                         <h4>[[${p.nombreProducto}]]</h4>
@@ -23,12 +24,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                              height="200" 
                              alt="alt"/>
                         <p>[[#{producto.talla}]]: [[${p.tallaProducto}]] <br/>
-                            [[#{producto.precio}]]: ₡[[${p.precio}]]</p>
-                        <a class="navegacion-link" th:href="@{/vistaProducto/vista}">[[#{producto.vermas}]]</a>
+                            [[#{producto.precio}]]: ₡[[${p.precio}]]<br/>
+                        </p>
+                        <a class="navegacion-link texto-negro" th:href="@{/producto/vista/}+${p.idProducto}">[[#{producto.vermas}]]</a>
                     </div>
                 </div>
 
-
+                 </div>
             </div>
      </section>
             

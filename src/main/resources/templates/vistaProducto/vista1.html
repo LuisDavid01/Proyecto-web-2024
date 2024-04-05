@@ -25,21 +25,22 @@
             </div>
             <div class="yellow-black-section">
                 <div class="yellow-content">
-                    <div class="article-container">
+                   
+                       <div class="article-container">
                         
                         <!-- Imagen del artículo -->
                         <div class="article-image">
-                            <img src="ruta/a/la/imagen.jpg" alt="Descripción de la imagen"/>
+                            <img src="${producto.rutaImagen}" alt="Descripción de la imagen"/>
                         </div>
                         <!-- Contenido del artículo -->
                         <div class="article-content">
                             <h1>Bienvenidos a Yellow Men Store</h1>
                             <h2>Artículo Seleccionado</h2>
                             <p>Descripción del artículo seleccionado...</p>
-                            <p>Precio: $XX.XX</p>
-                            <p>Talla: M</p>
-                            <p>Categoría: Ropa</p>
-                            <p>ID: 12345</p>
+                            <p>Precio: ${producto.precio}</p>
+                            <p>Talla: ${producto.tallaProducto}</p>
+                            <p>Categoría: ${producto.idCategoria}</p>
+                            <p>ID: ${producto.idProducto}</p>
 
                             <div class="article-content-extras">
                                 <h2>Mira mas productos</h2>
@@ -58,7 +59,10 @@
                                
                             </div>
                         </div>
-                    </div>
+                    </div> 
+                        
+                   
+                    
                 </div>
 
 
