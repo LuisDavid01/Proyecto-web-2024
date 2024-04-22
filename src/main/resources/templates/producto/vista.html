@@ -1,6 +1,7 @@
 <!DOCTYPE html>  
 <html xmlns ="http://www.w3.org/1999/xhtml"
-   xmlns:th ="http://www.thymeleaft.org">  
+   xmlns:th ="http://www.thymeleaft.org"
+   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">  
     <head>
         <meta charset="UTF-8"/>
         <title>Tienda de Productos</title>
@@ -41,7 +42,7 @@
                             <p>Descripción del artículo seleccionado...</p>
                             <p>Precio: [[${producto.precio}]]</p>
                             <p>Talla: [[${producto.tallaProducto}]]</p>
-                            <p>Categoría: [[${producto.idCategoria}]]</p>
+                            <p>Categoría: [[${producto.categoria.idCategoria}]]</p>
                             <p>ID: [[${producto.idProducto}]]</p>
 
                             <div class="article-content-extras">

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:fragment="head">
         <title>Yellow Men Store</title>
         <meta charset="UTF-8"/>
@@ -13,11 +14,12 @@
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
         <link th:href="@{/css/estilos.css}" rel="stylesheet" />
+         <link th:href="@{/css/styles2.css}" rel="stylesheet" />
     </head>
     <body>
         <header th:fragment="header" class="encabezado"> 
             <nav class="navegacion">
-                <a class="navegacion-link" th:href="@{/}"><img src="img-Categorias2/YM2.png" alt="" width="50" height="50"/></a>
+                <a class="navegacion-link" th:href="@{/}"><img src="img/YM2.png" alt="" width="50" height="50"/></a>
                 <a class="logo-sobre-nosotros navegacion-link" th:href="@{/sobreNosotros/info}">[[#{plantilla.sobreNosotros}]]</a>
                 <ul class="menus">
 

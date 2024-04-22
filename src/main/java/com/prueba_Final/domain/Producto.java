@@ -22,13 +22,15 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
     private long idProducto;
-    private long idCategoria;
+    //private long idCategoria;
     private String nombreProducto;
     private String tallaProducto;
     private double precio;
     private String rutaImagen;
     
-   
+   @ManyToOne
+   @JoinColumn(name="id_categoria")
+   private Categoria categoria;
 }
 // id_categoria INT NOT NULL AUTO_INCREMENT,
 //  nombre_categoria VARCHAR(30) NOT NULL,

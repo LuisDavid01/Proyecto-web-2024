@@ -11,7 +11,21 @@
 
     </head>
     <body>
-        <header th:replace="~{layout/plantilla :: header}"/>
+        
+        <!-- aca va el login -->
+        <section>
+            <div>
+            <form method="post" th:action="@{/login}">
+                <input type="text" name="username" />   <br/>
+                <input type="password" name="password" />   <br/>
+                <input type="submit" value="login" />   <br/>
+                
+                
+            </form>
+            
+        </div>
+            
+        </section>
         
     </body>
 </html>

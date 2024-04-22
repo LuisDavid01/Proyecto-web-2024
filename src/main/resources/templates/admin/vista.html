@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns ="http://www.w3.org/1999/xhtml"
-   xmlns:th ="http://www.thymeleaft.org" >
+   xmlns:th ="http://www.thymeleaft.org" 
+   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
   <head>
     <meta charset="utf-8" />
     <script th:src="@{/js/rutinas.js}"></script>
@@ -16,7 +17,7 @@
             class="logo-1-1"
             loading="lazy"
             alt=""
-            src="AssetsAdmin/logoYM.png"
+            th:src="@{/img/logoYM.png}"
           />
         </div>
         <header class="admin-vista-cliente">
@@ -36,48 +37,15 @@
 
           <div class="agregar-articulo">Agregar articulo</div>
         </section>
-        <section class="frame-wrapper">
-          <div class="articulo-nombre-parent">
-            <div class="articulo-nombre">
-              <div class="nombre-del-articulo">Nombre del articulo</div>
-              <div class="textboxnombrearticulo"></div>
-            </div>
-            <div class="precio-del-articulo-parent">
-              <div class="precio-del-articulo">Precio del articulo</div>
-              <div class="textboxprecioarticulo"></div>
-            </div>
-            <div class="categoria-del-articulo-parent">
-              <div class="categoria-del-articulo">Categoria del articulo</div>
-              <div class="textboxcategoriaarticulo"></div>
-            </div>
-            <div class="frame-group">
-              <div class="frame-container">
-                <div class="tallas-del-articulo-parent">
-                  <div class="tallas-del-articulo">Tallas del articulo</div>
-                  <div class="textboxtallasarticulo"></div>
-                </div>
-                <div class="frame-div">
-                  <div class="botonagregarimagen-parent">
-                    <div class="botonagregarimagen"></div>
-                    <div class="agregar-imagen">Agregar imagen</div>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-parent1">
-                <div class="botonagregararticulo-parent">
-                  <div class="botonagregararticulo"></div>
-                  <div class="agregar-articulo1">Agregar articulo</div>
-                </div>
-                <div class="actualizar-articulo-wrapper">
-                  <b class="actualizar-articulo">Actualizar articulo</b>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+          <!-- agregar producto -->
+           <section th:replace="~{admin/fragmento :: agregarArticulo2}"/>
+        
       </main>
+         <section th:replace="~{admin/fragmento :: tablaProductos}"/>
       <div class="admin-child"></div>
       <div class="article-actions-wrapper">
+          
+          
         <div class="article-actions">
           <button class="update-remove-control">
             <div class="botonactualizararticulo"></div>

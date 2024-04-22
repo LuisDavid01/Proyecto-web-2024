@@ -4,7 +4,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
         <title>Yellow Men Store</title>
         <meta charset="UTF-8"/>
@@ -19,9 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <div  th:each="c : ${categorias}"> 
                     <div>
                         <h4><a class="navegacion-categoria-link" th:href="@{/producto/listado}">[[${c.nombreCategoria}]]</a></h4>
-                        <a th:href="@{/categoria/modificar/}+${c.idCategoria}"
-                           class="btn btn-success">
-                            <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a>
+                        
                     </div>
                 </div>
 

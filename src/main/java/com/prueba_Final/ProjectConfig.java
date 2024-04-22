@@ -6,10 +6,18 @@
 package com.prueba_Final;
 
 import java.util.Locale;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -34,4 +42,61 @@ public class ProjectConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registro) {
        registro.addInterceptor(localeChangeInterceptor());
     }
+    
+    @Override
+    public void addViewControllers(ViewControllerRegistry registro){
+        registro.addViewController("/").setViewName("index");
+        registro.addViewController("/index").setViewName("index");
+        registro.addViewController("/login").setViewName("login");
+        registro.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
+    }
+    
+    @Bean
+    public SecurityFilterChain SecurityFilterChain(HttpSecurity http) throws Exception{
+        http.authorizeHttpRequests((request) -> request
+                .requestMatchers("/","/index","/carrito/**","/js/**","/webjars/**","/registro/**",
+                        "/categoria/listado/**","/categoria2/vistaCategoria/**","/producto/listado/**","/sobreNosotros/info","/css/**")
+                .permitAll()
+                
+               
+                .requestMatchers("/admin/vista")
+                .hasRole("EMPLEADO")
+                .requestMatchers("/admin/**")
+                .hasRole("ADMIN")
+        )
+                .formLogin((form) -> form.loginPage("/login").permitAll())
+                .logout((logout) -> logout.permitAll());
+                
+        
+    return http.build();
+    }
+    
+//      @Autowired
+//    private UserDetailsService userDetailsService;
+    
+    @Bean
+    public UserDetailsService users(){
+        UserDetails admin = User.builder()
+                .username("juan")
+                .password("{noop}123")
+                .roles("ADMIN","EMPLEADO")
+                .build();
+         UserDetails empleado = User.builder()
+                .username("rebeca")
+                .password("{noop}456")
+                .roles("EMPLEADO")
+                .build();
+         
+         
+        return new InMemoryUserDetailsManager(admin,empleado);
+    }
+//    @Autowired
+//    private UserDetailsService userDetailsService;
+//    
+//    @Autowired
+//    public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception{
+//    builder.userDetailsService(userDetailsService)
+//            .passwordEncoder(new BCryptPasswordEncoder());
+//    
+//    }
 }

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Yellow Men Store</title>
+        <meta charset="UTF-8"/>
+
+
+
+    </head>
+    <body>
+        <!--Conseguir productos-->
+        <section  th:fragment="tablaProductos">
+
+            <table>
+                <thead>
+                    <tr class="texto-amarillo">
+                        <th>Id</th>
+                        <th>nombre</th>
+                        <th>talla</th>
+                        <th>precio</th>
+                        <th>categoria</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr  class="texto-amarillo" th:each="producto : ${productos}">
+                        <!-- Detalle del producto -->
+                        <td>[[${producto.idProducto}]]</td>
+                        <td>[[${producto.nombreProducto}]]</td>
+                        <td>[[${producto.tallaProducto}]]</td>
+                        <td>[[${producto.precio}]]</td>
+                        <td>[[${producto.categoria.nombreCategoria}]]</td>
+                        <!-- Botones crud -->
+                        <td sec:authorize="hasRole('ADMIN')">
+                            <a th:href="@{/admin/eliminar/}+${producto.idProducto}" class="btn btn-danger"> eliminar</a>
+
+                            <a th:href="@{/admin/modificar/}+${producto.idProducto}" class="btn btn-danger"> modificar</a>
+
+                        </td>
+                    </tr>
+
+                </tbody>
+
+
+            </table>
+
+
+
+        </section>
+
+
+        <!-- Agregar producto -->
+        <section  th:fragment="agregarProducto" sec:authorize="hasRole('ADMIN')">
+            <form th:action="@{/admin/guardar}"
+                  th:object="${producto}"
+                  method="POST" class="was-validated" enctype="multipart/form-data"
+                  >
+                <div>
+                    <label for="categoria">categoria</label>
+                    <select class="form-select" name="categoria.idCategoria">
+                        <option th:each="c : ${categorias}" 
+                                th:value="${c.idCategoria}"
+                                th:text="${c.nombreCategoria}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="nombreProducto">nombre</label>
+                    <input type="text" class="form-control" name="nombreProducto" required="true"/>
+                </div>
+
+                <div>
+                    <label for="tallaProducto">talla</label>
+                    <input type="text" class="form-control" name="tallaProducto" required="true"/>
+                </div>
+
+
+                <div>
+                    <label for="precio">precio</label>
+                    <input type="number" class="form-control" name="precio" required="true"/>
+                </div>
+                <div>
+                    <label for="imagen">[[#{producto.imagen}]]</label>
+                    <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                    <img id="blah" src="#" alt="your image" height="200"/>
+                </div>
+                <button type="submit">
+                    guardaaar
+                </button>
+
+
+
+
+            </form>
+
+
+        </section>
+
+
+        <!-- modificar -->
+        <section  th:fragment="ModificarProducto">
+            <form th:action="@{/admin/guardar}"
+                  th:object="${producto}"
+                  method="POST" class="was-validated" enctype="multipart/form-data"
+                  >
+                <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
+                <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
+                <div>
+                    <label for="categoria">categoria</label>
+                    <select class="form-select" name="categoria.idCategoria" th:field="*{categoria.idCategoria}">
+                        <option th:each="c : ${categorias}" 
+                                th:value="${c.idCategoria}"
+                                th:text="${c.nombreCategoria}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="nombreProducto">nombre</label>
+                    <input type="text" class="form-control" name="nombreProducto" th:field="*{nombreProducto}" required="true"/>
+                </div>
+
+                <div>
+                    <label for="tallaProducto">talla</label>
+                    <input type="text" class="form-control" name="tallaProducto" th:field="*{tallaProducto}"required="true"/>
+                </div>
+
+
+                <div>
+                    <label for="precio">precio</label>
+                    <input type="number" class="form-control" name="precio" th:field="*{precio}" required="true"/>
+                </div>
+                <div>
+                    <label for="imagen">[[#{producto.imagen}]]</label>
+                    <input class="form-control" type="file" name="imagenFile"
+                           onchange="readURL(this);" />
+                    <img id="blah" th:src="@{${producto.rutaImagen}}" alt="your image" height="200"/>
+                </div>
+                <button type="submit">
+                    guardaaar
+                </button>
+
+
+
+
+            </form>
+
+
+
+        </section>
+
+        <section th:fragment="agregarArticulo2">
+            <form th:action="@{/admin/guardar}"
+                  th:object="${producto}"
+                  method="POST" class="was-validated" enctype="multipart/form-data"
+                  >
+
+                <section class="frame-wrapper">
+                    <div class="articulo-nombre-parent">
+                        <div class="articulo-nombre">
+                            <div class="nombre-del-articulo">
+                                <label for="nombreProducto">nombre</label>
+                                <input type="text" class="form-control" name="nombreProducto" required="true"/>
+                            </div>
+
+                        </div>
+                        <div class="precio-del-articulo-parent">
+                            <div class="precio-del-articulo">
+                                <label for="precio">precio</label>
+                                <input type="number" class="form-control" name="precio"  required="true"/>
+                            </div>
+
+                        </div>
+                        <div class="categoria-del-articulo-parent">
+                            <div class="categoria-del-articulo">
+                                <label for="categoria">categoria</label>
+                                <select class="form-select" name="categoria.idCategoria">
+                                    <option th:each="c : ${categorias}" 
+                                            th:value="${c.idCategoria}"
+                                            th:text="${c.nombreCategoria}"></option>
+                                </select>
+
+                            </div>
+
+                        </div>
+                        <div class="frame-group">
+                            <div class="frame-container">
+                                <div class="tallas-del-articulo-parent">
+                                    <div class="tallas-del-articulo">
+
+                                        <label for="tallaProducto">talla</label>
+                                        <input type="text" class="form-control" name="tallaProducto" required="true"/>
+
+                                    </div>
+
+                                </div>
+                                <div class="frame-div">
+                                    <div class="botonagregarimagen-parent">
+                                        <div >
+                                            <label for="imagen">agregar imagen</label>
+                                            <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                                            <img id="blah" src="#" alt="your image" height="200"/>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="frame-parent1">
+                                <div class="botonagregararticulo-parent">
+                                    <button type="submit">
+                                        guardaaar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+            </form>
+        </section>
+    </body>
+</html>
