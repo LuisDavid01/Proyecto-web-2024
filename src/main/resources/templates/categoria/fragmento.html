@@ -19,9 +19,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <div class="listaCategoria">
                 <div  th:each="c : ${categorias}"> 
                     <div>
+                        <form method="post" th:action="@{/producto/vistaCategoria}">
+                            <input type="hidden" th:name="idDeCategoria" th:value="${c.idCategoria}" />
+                            <button type="submit" class="texto-negro"> [[${c.nombreCategoria}]]</button>
+                            
+                        </form>
                         <h4><a class="navegacion-categoria-link" th:href="@{/producto/listado}">[[${c.nombreCategoria}]]</a></h4>
                         
                     </div>
+                    
                 </div>
 
 

@@ -20,4 +20,6 @@ public interface ProductoService {
     public void save(Producto producto);
     
     public void delete(Producto producto);
+    
+     public List<Producto> consultaProductoCategoria(int idDeCategoria);
 }

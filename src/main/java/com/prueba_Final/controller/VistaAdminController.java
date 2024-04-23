@@ -45,7 +45,7 @@ public class VistaAdminController {
     public String save(Producto producto
             
     , @RequestParam("ImageFile") MultipartFile imagenFile){
-        System.out.println("paseeeee");
+       
     if(!imagenFile.isEmpty()){
         productoService.save(producto);
         firebaseStorageService.cargaImagen(imagenFile, "producto", producto.getIdProducto());

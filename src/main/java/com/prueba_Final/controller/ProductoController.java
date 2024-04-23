@@ -6,7 +6,9 @@ package com.prueba_Final.controller;
 
 
 
+import com.prueba_Final.domain.Categoria;
 import com.prueba_Final.domain.Producto;
+import com.prueba_Final.service.CategoriaService;
 import com.prueba_Final.service.FirebaseStorageService;
 import com.prueba_Final.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
     
+     @Autowired
+    private CategoriaService categoriaService;
+    
     @GetMapping("/listado")
     public String listado(Model model){
         var lista = productoService.getProductos();
@@ -42,7 +47,9 @@ public class ProductoController {
     if(!imagenFile.isEmpty()){
         productoService.save(producto);
         firebaseStorageService.cargaImagen(imagenFile, "producto", producto.getIdProducto());
-    }
+    }else{
+        System.err.println("no paso imagen");
+        }
         return "redirect:/producto/listado";
     }
     
@@ -64,5 +71,12 @@ public class ProductoController {
         producto=productoService.getProducto(producto);
         model.addAttribute("producto",producto);
         return "/producto/vista";
+    }
+    
+    @GetMapping("/vistaCategoria")
+    public String consultaProductoCategoria(@RequestParam(value="idDeCategoria") int idDeCategoria, Model model){
+        var lista = productoService.consultaProductoCategoria(idDeCategoria);
+        model.addAttribute("productos",lista);
+        return "/producto/vistaCategoria";
     }
 }

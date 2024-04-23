@@ -1,8 +1,7 @@
 //* La siguiente función se utiliza para visualizar la imagen seleccionada en la
  //* página html donde se desea "cargar" utilizando un llamado "ajax"*/
 function readURL(input) {
-    alert("Hola");
-    alert(input.toString());
+   
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
