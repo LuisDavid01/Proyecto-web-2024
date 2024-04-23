@@ -218,5 +218,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
             </form>
         </section>
+        
+        
+        <!--Conseguir productos-->
+        <section  th:fragment="tablaPromociones">
+            
+               <table>
+                <thead>
+                    <tr class="texto-amarillo">
+                        <th>Id</th>
+                        <th>nombre</th>
+                        <th>descripcion</th>
+                        <th>descuento</th>
+                        <th>activo</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr  class="texto-amarillo" th:each="promocion : ${promociones}">
+                        <!-- Detalle del producto -->
+                        <td>[[${promocion.idPromocion}]]</td>
+                        <td>[[${promocion.nombre}]]</td>
+                        <td>[[${promocion.descripcion}]]</td>
+                        <td>[[${promocion.descuento}]]</td>
+                        <td>[[${promocion.activo}]]</td>
+                        
+                    </tr>
+
+                </tbody>
+
+
+            </table>
+
+
+            
+        </section>
     </body>
 </html>

@@ -12,7 +12,7 @@ import java.util.List;
  * @author Luis David
  */
 public interface PromocionService {
-    public List<Promocion> getPromocions();
+    public List<Promocion> getPromocions(boolean activo);
     
     public Promocion getPromocion(Promocion promocion);
     

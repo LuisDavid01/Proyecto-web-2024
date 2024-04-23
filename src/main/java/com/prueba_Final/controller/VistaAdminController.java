@@ -9,6 +9,7 @@ import com.prueba_Final.domain.Producto;
 import com.prueba_Final.service.CategoriaService;
 import com.prueba_Final.service.FirebaseStorageService;
 import com.prueba_Final.service.ProductoService;
+import com.prueba_Final.service.PromocionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,12 +31,17 @@ public class VistaAdminController {
     @Autowired
     private CategoriaService categoriaService;
     
+    @Autowired
+    private PromocionService promocionService;
+    
     @GetMapping("/vista")
     public String listado(Model model){
         var lista = productoService.getProductos();
         model.addAttribute("productos", lista);
         var categorias = categoriaService.getCategorias();
         model.addAttribute("categorias", categorias);
+        var promocion = promocionService.getPromocions(false);
+        model.addAttribute("promociones", promocion);
         return "/admin/vista";
     }
      @Autowired
