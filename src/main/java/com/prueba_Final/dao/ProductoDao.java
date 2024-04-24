@@ -15,9 +15,11 @@ import org.springframework.data.jpa.repository.Query;
  * @author Luis David
  */
 public interface ProductoDao extends JpaRepository<Producto,Long>{
-//    SELECT p.* FROM  yellow_men_store.producto p,  yellow_men_store.categoria c WHERE p.id_categoria = c.id_categoria
-     @Query(nativeQuery=true,value=" SELECT p.* FROM  yellow_men_store.producto p WHERE p.id_categoria = :idDeCategoria")
-    public List<Producto> consultaProductoCategoria(int idDeCategoria);
+    
+    
+//    recupera productos en un rango de precio
+    @Query(nativeQuery = true, value="SELECT * FROM producto p WHERE p.precio BETWEEN :precioInf AND :precioSup")
+    public List<Producto> consultaPrecioProducto(double precioInf, double precioSup);
     
     
 }

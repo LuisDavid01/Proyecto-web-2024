@@ -33,28 +33,9 @@ public class CategoriaController {
         return "/categoria/listado";
     }
     
-    @Autowired
-    private FirebaseStorageService firebaseStorageService;
-    @PostMapping("/guardar")
-    public String save(Categoria categoria
-    , @RequestParam("ImageFile") MultipartFile imagenFile){
-    if(!imagenFile.isEmpty()){
-        categoriaService.save(categoria);
-        firebaseStorageService.cargaImagen(imagenFile, "categoria", categoria.getIdCategoria());
-    }
-        return "redirect:/categoria/listado";
-    }
+  
     
-    @GetMapping("/modificar/{idCategoria}")
-    public String modifica(Categoria categoria, Model model){
-        categoria=categoriaService.getCategoria(categoria);
-        model.addAttribute("categoria",categoria);
-        return "/categoria/modifica";
-    }
+  
     
-    @GetMapping("/eliminar/{idCategoria}")
-    public String delete(Categoria categoria, Model model){
-        categoriaService.delete(categoria);
-        return "redirect:/categoria/listado";
-    }
+ 
 }

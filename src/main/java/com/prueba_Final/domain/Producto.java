@@ -24,6 +24,7 @@ public class Producto implements Serializable {
     private long idProducto;
     //private long idCategoria;
     private String nombreProducto;
+    private String detalle;
     private String tallaProducto;
     private double precio;
     private String rutaImagen;

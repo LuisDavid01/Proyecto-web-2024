@@ -6,6 +6,7 @@ package com.prueba_Final.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -24,6 +25,10 @@ public class Categoria implements Serializable {
     private long idCategoria;
     private String nombreCategoria;
     private String rutaImagen;
+    
+    @OneToMany
+    @JoinColumn(name="id_categoria", updatable = false)
+    private List<Producto> productos;
 }
 // id_categoria INT NOT NULL AUTO_INCREMENT,
 //  nombre_categoria VARCHAR(30) NOT NULL,

@@ -12,5 +12,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Luis David
  */
 public interface CategoriaDao extends JpaRepository<Categoria,Long>{
-    
+   
 }

@@ -41,15 +41,19 @@ public class ProductoController {
     }
     @Autowired
     private FirebaseStorageService firebaseStorageService;
-    @PostMapping("/guardar")
-    public String save(Producto producto
-    , @RequestParam("ImageFile") MultipartFile imagenFile){
-    if(!imagenFile.isEmpty()){
-        productoService.save(producto);
-        firebaseStorageService.cargaImagen(imagenFile, "producto", producto.getIdProducto());
-    }else{
-        System.err.println("no paso imagen");
+
+   @PostMapping("/guardar")
+    public String productoGuardar(Producto producto,
+            @RequestParam("imagenFile") MultipartFile imagenFile) {        
+        if (!imagenFile.isEmpty()) {
+            productoService.save(producto);
+            producto.setRutaImagen(
+                    firebaseStorageService.cargaImagen(
+                            imagenFile, 
+                            "producto", 
+                            producto.getIdProducto()));
         }
+        productoService.save(producto);
         return "redirect:/producto/listado";
     }
     
@@ -73,10 +77,5 @@ public class ProductoController {
         return "/producto/vista";
     }
     
-    @GetMapping("/vistaCategoria")
-    public String consultaProductoCategoria(@RequestParam(value="idDeCategoria") int idDeCategoria, Model model){
-        var lista = productoService.consultaProductoCategoria(idDeCategoria);
-        model.addAttribute("productos",lista);
-        return "/producto/vistaCategoria";
-    }
+    
 }

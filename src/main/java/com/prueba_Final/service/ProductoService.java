@@ -21,5 +21,6 @@ public interface ProductoService {
     
     public void delete(Producto producto);
     
-     public List<Producto> consultaProductoCategoria(int idDeCategoria);
+    //    recupera productos en un rango de precio
+    public List<Producto> consultaPrecioProducto(double precioInf, double precioSup);
 }

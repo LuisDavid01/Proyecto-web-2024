@@ -73,6 +73,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <label for="nombreProducto">nombre</label>
                     <input type="text" class="form-control" name="nombreProducto" required="true"/>
                 </div>
+                
+                <div>
+                    <label for="detalle">detalle</label>
+                    <input type="text" class="form-control" name="detalle" required="true"/>
+                </div>
 
                 <div>
                     <label for="tallaProducto">talla</label>
@@ -103,9 +108,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                   th:object="${producto}"
                   method="POST" class="was-validated" enctype="multipart/form-data"
                   >
+                
+                
+                <br/>
                 <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
                 <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
                 <div>
+                    <br/>
+                    <br/>
+                    <br/>
                     <label for="categoria">categoria</label>
                     <select class="form-select" name="categoria.idCategoria" th:field="*{categoria.idCategoria}">
                         <option th:each="c : ${categorias}" 
@@ -117,6 +128,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <div>
                     <label for="nombreProducto">nombre</label>
                     <input type="text" class="form-control" name="nombreProducto" th:field="*{nombreProducto}" required="true"/>
+                </div>
+                
+                <div>
+                    <label for="detalle">detalle</label>
+                    <input type="text" class="form-control" name="detalle" th:field="*{detalle}"required="true"/>
                 </div>
 
                 <div>
@@ -147,7 +163,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 
         </section>
-
+// prueba de añadir articulo con un poco del css
         <section th:fragment="agregarArticulo2">
             <form th:action="@{/admin/guardar}"
                   th:object="${producto}"
@@ -161,10 +177,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <label for="nombreProducto">nombre</label>
                                 <input type="text" class="form-control" name="nombreProducto" required="true"/>
                             </div>
-
+                            
+                           
+                            
+                           
                         </div>
                         <div class="precio-del-articulo-parent">
                             <div class="precio-del-articulo">
+                                 <div>
+                                <label for="detalle">detalle</label>
+                                <input type="text" class="form-control" name="detalle" required="true"/>
+                            </div>
                                 <label for="precio">precio</label>
                                 <input type="number" class="form-control" name="precio"  required="true"/>
                             </div>

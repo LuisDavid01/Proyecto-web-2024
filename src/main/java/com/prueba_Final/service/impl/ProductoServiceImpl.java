@@ -46,13 +46,12 @@ public class ProductoServiceImpl implements ProductoService{
     public void delete(Producto producto) {
         productoDao.delete(producto);
     }
-    
-    //sentencia sql
+
     @Override
     @Transactional(readOnly = true)
-    public List<Producto> consultaProductoCategoria(int idDeCategoria){
-        return productoDao.consultaProductoCategoria(idDeCategoria);
-        
-        
+    public List<Producto> consultaPrecioProducto(double precioInf, double precioSup) {
+        return productoDao.consultaPrecioProducto(precioInf, precioSup);
     }
+    
+   
 }

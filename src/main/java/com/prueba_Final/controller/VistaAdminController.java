@@ -47,15 +47,19 @@ public class VistaAdminController {
      @Autowired
     private FirebaseStorageService firebaseStorageService;
      
+     // crud producto
     @PostMapping("/guardar")
-    public String save(Producto producto
-            
-    , @RequestParam("ImageFile") MultipartFile imagenFile){
-       
-    if(!imagenFile.isEmpty()){
+    public String productoGuardar(Producto producto,
+            @RequestParam("imagenFile") MultipartFile imagenFile) {        
+        if (!imagenFile.isEmpty()) {
+            productoService.save(producto);
+            producto.setRutaImagen(
+                    firebaseStorageService.cargaImagen(
+                            imagenFile, 
+                            "producto", 
+                            producto.getIdProducto()));
+        }
         productoService.save(producto);
-        firebaseStorageService.cargaImagen(imagenFile, "producto", producto.getIdProducto());
-    }
         return "redirect:/admin/vista";
     }
     
@@ -63,6 +67,8 @@ public class VistaAdminController {
     public String modifica(Producto producto, Model model){
         producto=productoService.getProducto(producto);
         model.addAttribute("producto",producto);
+         var categorias = categoriaService.getCategorias();
+        model.addAttribute("categorias", categorias);
         return "/admin/modificar";
     }
     
@@ -72,6 +78,6 @@ public class VistaAdminController {
         return "redirect:/admin/vista";
     }
     
-     
+          // crud producto
     
 }
