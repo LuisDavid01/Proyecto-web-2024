@@ -9,8 +9,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <head th:replace="~{layout/plantilla :: head}">
         <title>Yellow Men Store</title>
         <meta charset="UTF-8"/>
-        
-        
+
+
 
     </head>
     <body>
@@ -19,20 +19,77 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <div class="listaCategoria">
                 <div  th:each="c : ${categorias}"> 
                     <div>
-                        <form method="post" th:action="@{/producto/vistaCategoria}">
-                            <input type="hidden" th:name="idDeCategoria" th:value="${c.idCategoria}" />
-                            <button type="submit" class="texto-negro"> [[${c.nombreCategoria}]]</button>
-                            
-                        </form>
-                        <h4><a class="navegacion-categoria-link" th:href="@{/producto/listado}">[[${c.nombreCategoria}]]</a></h4>
-                        
+
+                        <h4><a class="navegacion-categoria-link" th:href="@{/categoria/listado2/}+${c.idCategoria}">[[${c.nombreCategoria}]]</a></h4>
+
                     </div>
-                    
+
                 </div>
 
 
             </div>
         </section>
 
+        <!--Conseguir productos-->
+        <section  th:fragment="listaProductos">
+            
+            
+            <div class="listaCategoria">
+                <div >
+                <form method="post" th:action="@{/categoria/query1}">
+                    
+                    <label for="precioInf">Precio inferior</label>
+                    <input type="number" class="form-control" th:value="${precioInf}" th:name="precioInf" required="true"/>
+
+                    <label for="precioSup">Precio superior</label>
+                    <input type="number" class="form-control" th:value="${precioSup}" th:name="precioSup" required="true"/>
+
+                    <button type="submit">Buscar</button>
+
+                </form>
+                  
+            </div>
+                <div th:if="${productos != null and !productos.empty}">
+                    <div  th:each="p : ${productos}" > 
+                        <div>
+                            <h4>[[${p.nombreProducto}]]</h4>
+                            <img th:src="${p.rutaImagen}"  
+                                 height="200" 
+                                 alt="alt"/>
+                            <p>[[#{producto.talla}]]: [[${p.tallaProducto}]] <br/>
+                                [[#{producto.precio}]]: ₡[[${p.precio}]]<br/>
+                            </p>
+                            <a class="navegacion-link texto-negro" th:href="@{/producto/vista/}+${p.idProducto}">[[#{producto.vermas}]]</a>
+                        </div>
+                    </div>
+
+                </div>
+                
+                
+                 
+            </div>
+        </section>
+
+
+        <!--Conseguir query precios-->
+        <section  th:fragment="filtros"> 
+           
+            <div class="listaCategoria">
+                <form method="post" th:action="@{/categoria/query1}">
+                    
+                    <label for="precioInf">Precio inferior</label>
+                    <input type="number" class="form-control" th:value="${precioInf}" th:name="precioInf" required="true"/>
+
+                    <label for="precioSup">Precio superior</label>
+                    <input type="number" class="form-control" th:value="${precioSup}" th:name="precioSup" required="true"/>
+
+                    <button type="submit">Buscar</button>
+
+                </form>
+
+            </div>
+
+
+        </section>
     </body>
 </html>

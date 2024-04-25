@@ -78,6 +78,13 @@ public class VistaAdminController {
         return "redirect:/admin/vista";
     }
     
-          // crud producto
+        
+    //crud categoria
+    
+    
+    // crud promocion
+    
+    
+      // crud usuario
     
 }
