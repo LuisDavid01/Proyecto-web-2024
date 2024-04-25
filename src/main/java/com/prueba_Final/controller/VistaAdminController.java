@@ -5,7 +5,9 @@
 package com.prueba_Final.controller;
 
 
+import com.prueba_Final.domain.Categoria;
 import com.prueba_Final.domain.Producto;
+import com.prueba_Final.domain.Promocion;
 import com.prueba_Final.service.CategoriaService;
 import com.prueba_Final.service.FirebaseStorageService;
 import com.prueba_Final.service.ProductoService;
@@ -80,10 +82,54 @@ public class VistaAdminController {
     
         
     //crud categoria
+    @PostMapping("/guardarCategoria")
+    public String categoriaGuardar(Categoria categoria,
+            @RequestParam("imagenFile") MultipartFile imagenFile) {        
+        if (!imagenFile.isEmpty()) {
+            categoriaService.save(categoria);
+            categoria.setRutaImagen(
+                    firebaseStorageService.cargaImagen(
+                            imagenFile, 
+                            "categoria", 
+                            categoria.getIdCategoria()));
+        }
+        categoriaService.save(categoria);
+        return "redirect:/admin/vista";
+    }
     
+    @GetMapping("/modificarCategoria/{idCategoria}")
+    public String categoriaModifica(Categoria categoria, Model model){
+        categoria= categoriaService.getCategoria(categoria);
+        model.addAttribute("categoria",categoria);
+        return "/admin/modificarCategoria";
+    }
+    
+    @GetMapping("/eliminarCategoria/{idCategoria}")
+    public String categoriaDelete(Categoria categoria, Model model){
+        categoriaService.delete(categoria);
+        return "redirect:/admin/vista";
+    }
     
     // crud promocion
     
+     @PostMapping("/guardarPromocion")
+    public String promocionGuardar(Promocion promocion) {        
+       promocionService.save(promocion);
+        return "redirect:/admin/vista";
+    }
+    
+    @GetMapping("/modificarPromocion/{idPromocion}")
+    public String promocionModifica(Promocion promocion, Model model){
+        promocion=promocionService.getPromocion(promocion);
+        model.addAttribute("promocion",promocion);
+        return "/admin/modificarPromocion";
+    }
+    
+    @GetMapping("/eliminarPromocion/{idPromocion}")
+    public String PromocionDelete(Promocion promocion, Model model){
+        promocionService.delete(promocion);
+        return "redirect:/admin/vista";
+    }
     
       // crud usuario
     

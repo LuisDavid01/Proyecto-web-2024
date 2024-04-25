@@ -102,7 +102,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </section>
 
 
-        <!-- modificar -->
+        <!-- modificar producto-->
         <section  th:fragment="ModificarProducto">
             <form th:action="@{/admin/guardar}"
                   th:object="${producto}"
@@ -163,7 +163,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 
         </section>
-// prueba de añadir articulo con un poco del css
+        <!-- agregar articulo con un poco del css -->
         <section th:fragment="agregarArticulo2">
             <form th:action="@{/admin/guardar}"
                   th:object="${producto}"
@@ -243,7 +243,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </section>
         
         
-        <!--Conseguir productos-->
+        <!--Conseguir promociones-->
         <section  th:fragment="tablaPromociones">
             
                <table>
@@ -259,14 +259,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </thead>
                 <tbody>
                     <tr  class="texto-amarillo" th:each="promocion : ${promociones}">
-                        <!-- Detalle del producto -->
+                        <!-- Detalle del promocion -->
                         <td>[[${promocion.idPromocion}]]</td>
                         <td>[[${promocion.nombre}]]</td>
                         <td>[[${promocion.descripcion}]]</td>
                         <td>[[${promocion.descuento}]]</td>
                         <td>[[${promocion.activo}]]</td>
                         
+                        <!-- Botones crud -->
+                        <td sec:authorize="hasRole('ADMIN')">
+                            <a th:href="@{/admin/eliminarPromocion/}+${promocion.idPromocion}" class="btn btn-danger"> eliminar</a>
+
+                            <a th:href="@{/admin/modificarPromocion/}+${promocion.idPromocion}" class="btn btn-danger"> modificar</a>
+
+                        </td>
                     </tr>
+                    
 
                 </tbody>
 
@@ -275,6 +283,214 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 
             
+        </section>
+        
+        
+        <!-- Agregar promocion -->
+        <section  th:fragment="agregarPromocion" sec:authorize="hasRole('ADMIN')">
+            <form th:action="@{/admin/guardarPromocion}"
+                  th:object="${promocion}"
+                  method="POST" class="was-validated" 
+                  >
+             
+
+                <div>
+                    <label for="nombre">nombre</label>
+                    <input type="text" class="form-control" name="nombre"  required="true"/>
+                </div>
+                
+                <div>
+                    <label for="descripcion">descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" required="true"/>
+                </div>
+
+                <div>
+                    <label for="descuento">descuento</label>
+                    <input type="number" class="form-control" name="descuento" required="true"/>
+                </div>
+
+
+                <div>
+                    <label for="activo">activo</label>
+                    <input class="form-check-input" type="checkbox" name="activo" id="activo"/>
+                </div>
+               
+                <button class="btn btn-primary" type="submit">
+                    guardaaar
+                </button>
+
+            </form>
+
+
+        </section>
+        
+        
+        
+        <!-- modificar promocion-->
+        <section  th:fragment="ModificarPromocion">
+            <form th:action="@{/admin/guardarPromocion}"
+                  th:object="${promocion}"
+                  method="POST" class="was-validated" 
+                  >
+                
+                
+                <br/>
+                <input type="hidden" name="idPromocion" th:field="*{idPromocion}"/>
+                <div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    
+                </div>
+
+                <div>
+                    <label for="nombre">nombre</label>
+                    <input type="text" class="form-control" name="nombre" th:field="*{nombre}" required="true"/>
+                </div>
+                
+                <div>
+                    <label for="descripcion">descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" th:field="*{descripcion}"required="true"/>
+                </div>
+
+                <div>
+                    <label for="descuento">descuento</label>
+                    <input type="number" class="form-control" name="descuento" th:field="*{descuento}"required="true"/>
+                </div>
+
+
+                <div>
+                    <label for="activo">activo</label>
+                    <input class="form-check-input" type="checkbox" name="activo" id="activo" th:field="*{activo}" />
+                </div>
+               
+                <button type="submit">
+                    guardaaar
+                </button>
+
+
+
+
+            </form>
+
+
+
+        </section>
+        
+        
+        
+        
+        
+        <!--Conseguir categorias-->
+        <section  th:fragment="tablaCategorias">
+            
+               <table>
+                <thead>
+                    <tr class="texto-amarillo">
+                        <th>Id</th>
+                        <th>nombre</th>
+                      
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr  class="texto-amarillo" th:each="categoria : ${categorias}">
+                        <!-- Detalle del categoria -->
+                        <td>[[${categoria.idCategoria}]]</td>
+                        <td>[[${categoria.nombreCategoria}]]</td>
+                        
+                        <!-- Botones crud -->
+                        <td sec:authorize="hasRole('ADMIN')">
+                            <a th:href="@{/admin/eliminarCategoria/}+${categoria.idCategoria}" class="btn btn-danger"> eliminar</a>
+
+                            <a th:href="@{/admin/modificarCategoria/}+${categoria.idCategoria}" class="btn btn-danger"> modificar</a>
+
+                        </td>
+                    </tr>
+                    
+
+                </tbody>
+
+
+            </table>
+
+
+            
+        </section>
+        
+        
+         <!-- Agregar categoria -->
+        <section  th:fragment="agregarCategoria" sec:authorize="hasRole('ADMIN')">
+            <form th:action="@{/admin/guardarCategoria}"
+                  th:object="${categoria}"
+                  method="POST" class="was-validated" enctype="multipart/form-data"
+                  >
+             
+
+                <div>
+                    <label for="nombreCategoria">nombre</label>
+                    <input type="text" class="form-control" name="nombreCategoria"  required="true"/>
+                </div>
+                
+
+                <div>
+                    <label for="imagen">Imagen de categoria</label>
+                    <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                    <img id="blah" src="#" alt="your image" height="200"/>
+                </div>
+               
+                <button class="btn btn-primary" type="submit">
+                    guardaaar
+                </button>
+
+            </form>
+
+
+        </section>
+         
+         
+          <!-- modificar categoria-->
+          
+        <section  th:fragment="ModificarCategoria">
+            <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+            <form th:action="@{/admin/guardarCategoria}"
+                  th:object="${categoria}"
+                  method="POST" class="was-validated" enctype="multipart/form-data"
+                  >
+                
+                
+                <br/>
+                <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
+                <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
+                
+                
+                 <div>
+                    <label for="nombreCategoria">nombre</label>
+                    <input type="text" class="form-control" name="nombreCategoria" th:field="*{nombreCategoria}" required="true"/>
+                </div>
+                
+
+                <div>
+                    <label for="imagen">Imagen de categoria</label>
+                    <input class="form-control" type="file" name="imagenFile"  onchange="readURL(this);"/>
+                    <img id="blah" th:src="@{${categoria.rutaImagen}}" alt="your image" height="200"/>
+                </div>
+               
+                <button type="submit">
+                    guardaaar
+                </button>
+
+
+
+
+            </form>
+
+
+
         </section>
     </body>
 </html>
