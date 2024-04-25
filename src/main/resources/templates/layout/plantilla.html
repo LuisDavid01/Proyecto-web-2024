@@ -40,6 +40,28 @@
 
         </header>
         
+        
+        <!--Conseguir productos-->
+     <section  th:fragment="listaProductos">
+         <div class="listaCategoria">
+             <div th:if="${productos != null and !productos.empty}">
+                <div  th:each="p : ${productos}"> 
+                    <div>
+                        <h4>[[${p.nombreProducto}]]</h4>
+                        <img th:src="${p.rutaImagen}"  
+                             height="200" 
+                             alt="alt"/>
+                        <p>[[#{producto.talla}]]: [[${p.tallaProducto}]] <br/>
+                            [[#{producto.precio}]]: ₡[[${p.precio}]]<br/>
+                        </p>
+                        <a class="navegacion-link texto-negro" th:href="@{/producto/vista/}+${p.idProducto}">[[#{producto.vermas}]]</a>
+                    </div>
+                </div>
+
+                 </div>
+            </div>
+     </section>
+        
 
     </body>
 </html>
