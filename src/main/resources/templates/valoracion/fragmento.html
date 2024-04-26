@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Yellow Men Store</title>
+        <meta charset="UTF-8"/>
+
+
+
+    </head>
+    <body>
+        <!--listado valoraciones-->
+        <section  th:fragment="listaValoraciones">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <div sec:authorize="hasRole('USER')">
+                <a th:href="@{/valoracion/agregar}" class="btn btn-dark">agregar</a> 
+            </div>
+            <div >
+
+                <br/>
+                <div  th:each=" v : ${valoraciones}"> 
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5>Puntuacion: [[${v.puntuacion}]]</h5>
+                            <p>[[${v.comentario}]]</p>
+                            <p>fecha de revision: [[${v.fechaValoracion}]]</p> 
+                            <div sec:authorize="hasRole('ADMIN')">
+                                <a th:href="@{/valoracion/listado/eliminar/}+${v.idValoracion}" class="btn btn-danger">Eliminar</a> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </section>
+
+        <!--agregar valoracion-->
+        <section  th:fragment="agregarValoracion"> 
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+            <form th:action="@{/valoracion/listado/guardar}"
+                  th:object="${valoracion}"
+                  method="POST" class="was-validated" 
+                  >
+                <div>
+                    <label for="puntuacion">puntuacion</label>
+                    <select class="form-select" name="puntuacion">
+                        <option  value="1">1</option>
+                        <option  value="2">2</option>
+                        <option  value="3">3</option>
+                        <option  value="4">4</option>
+                        <option  value="5">5</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="comentario">comentario</label>
+                    <textarea class="form-control" name="comentario" required="true" rows="3"></textarea>
+
+                </div>
+
+                <button class="btn btn-primary" type="submit">Guardar</button>
+
+            </form>
+
+
+
+        </section>
+
+
+
+    </body>
+</html>

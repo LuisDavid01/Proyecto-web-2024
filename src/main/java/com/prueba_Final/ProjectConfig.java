@@ -9,10 +9,12 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.LocaleResolver;
@@ -55,14 +57,15 @@ public class ProjectConfig implements WebMvcConfigurer {
     public SecurityFilterChain SecurityFilterChain(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests((request) -> request
                 .requestMatchers("/","/index","/carrito/**","/js/**","/webjars/**","/registro/**",
-                        "/categoria/**","/categoria2/vistaCategoria/**","/producto/**","/sobreNosotros/info","/css/**")
+                        "/categoria/**","/producto/**","/sobreNosotros/info","/css/**",
+                        "/valoracion/listado")
                 .permitAll()
                 
-                 .requestMatchers("/facturar/carrito")
+                 .requestMatchers("/facturar/carrito","valoracion/agregar/**","valoracion/listado/guardar")
                 .hasRole("USER")
                 .requestMatchers("/admin/vista")
                 .hasRole("EMPLEADO")
-                .requestMatchers("/admin/**")
+                .requestMatchers("/admin/**","/valoracion/**")
                 .hasRole("ADMIN")
         )
                 .formLogin((form) -> form.loginPage("/login").permitAll())
@@ -75,29 +78,31 @@ public class ProjectConfig implements WebMvcConfigurer {
 //      @Autowired
 //    private UserDetailsService userDetailsService;
     
-    @Bean
-    public UserDetailsService users(){
-        UserDetails admin = User.builder()
-                .username("juan")
-                .password("{noop}123")
-                .roles("ADMIN","EMPLEADO")
-                .build();
-         UserDetails empleado = User.builder()
-                .username("rebeca")
-                .password("{noop}456")
-                .roles("EMPLEADO")
-                .build();
-         
-         
-        return new InMemoryUserDetailsManager(admin,empleado);
-    }
-//    @Autowired
-//    private UserDetailsService userDetailsService;
-//    
-//    @Autowired
-//    public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception{
-//    builder.userDetailsService(userDetailsService)
-//            .passwordEncoder(new BCryptPasswordEncoder());
-//    
+//    @Bean
+//    public UserDetailsService users(){
+//        UserDetails admin = User.builder()
+//                .username("juan")
+//                .password("{noop}123")
+//                .roles("ADMIN","EMPLEADO")
+//                .build();
+//         UserDetails empleado = User.builder()
+//                .username("rebeca")
+//                .password("{noop}456")
+//                .roles("EMPLEADO")
+//                .build();
+//         
+//         
+//        return new InMemoryUserDetailsManager(admin,empleado);
 //    }
+ 
+    @Autowired
+   private UserDetailsService userDetailsService;
+    @Autowired
+    public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception{
+    builder.userDetailsService(userDetailsService)
+            .passwordEncoder(new BCryptPasswordEncoder());
+    
+    }
+    
+    
 }
