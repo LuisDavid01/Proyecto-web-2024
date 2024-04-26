@@ -7,19 +7,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : Luis David
 */
 footer{
-     text-align: center;
+    text-align: center;
     position: fixed;
     background-color:#fc7f03;
     color: white;
     left: 0;
     bottom: 0;
     width: 100%;
-   height: 20px;
-    
-    
+    height: 20px;
+
+
 }
 body {
-    
+
     margin: 0;
     box-sizing: border-box;
     background-color: yellow;
@@ -31,72 +31,92 @@ body {
     box-sizing: border-box;
     width: 100%;
     height: 100px;
-    
-    
 }
 
 .menus{
     display: flex;
     margin-left:  50%;
     list-style: none;
-    
-    
+
+
 }
 
 .menus-link{
     font-size: 18px;
     margin: 0 10px;
-    
+
 }
- 
+
 .navegacion{
-     display: flex;
+    display: flex;
     justify-content: space-between;
     max-height: 992px;
-    margin: 0px auto;
-    
-    
+    margin: 30px auto;
+
 }
 
 .navegacion-link{
     color: yellow;
+    font-weight: bold;
     text-decoration: none;
 
 }
-.texto-negro{
-    color: black
-    
+.texto-amarillo{
+    color: yellow;
+
 }
 .navegacion-categoria-link{
     font-size: 30px;
     font-style: oblique;
     color: black;
     text-decoration: none;
-    
+    padding: 20px !important;
 }
 
 
 .logo-sobre-nosotros{
-     color: yellow;
-    text-decoration: none;
-    
-}
-
-.listaCategoria{
-    padding: 5px;
-    position: fixed;
-    overflow-y: scroll;
-    color: black;
-    top: 100px;
-    left: 20%;
-    bottom: 20px;
-    width: 90%;
-    
-    
-}
-
-.texto-amarillo{
     color: yellow;
-    
-    
+    text-decoration: none;
+
+}
+
+.productos-container {
+    overflow-x: auto;
+}
+
+.listaCategoria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centramos las columnas */
+    margin-top: 120px; /* Margen en la parte superior */
+    margin-left: 125px; /* Margen en la parte izquierda */
+    margin-right: 30px;
+}
+
+
+.producto-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.producto-item {
+    width: 250px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    margin-top: 70px;
+}
+
+.producto-content {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: black;
+    padding: 20px;
+    height: 370px;
+}
+
+.producto-placeholder {
+    width: 250px;
+    margin-right: 10px;
+    visibility: hidden;
 }

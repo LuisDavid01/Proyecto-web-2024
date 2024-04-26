@@ -6,7 +6,7 @@
     <head th:fragment="head">
         <title>Yellow Men Store</title>
         <meta charset="UTF-8"/>
-        
+
         <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
         <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -14,54 +14,58 @@
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
         <link th:href="@{/css/estilos.css}" rel="stylesheet" />
-         <link th:href="@{/css/styles2.css}" rel="stylesheet" />
+        <link th:href="@{/css/styles2.css}" rel="stylesheet" />
     </head>
     <body>
         <header th:fragment="header" class="encabezado"> 
             <nav class="navegacion">
-                <a class="navegacion-link" th:href="@{/}"><img src="img/YM2.png" alt="" width="50" height="50"/></a>
+                <a class="navegacion-link" th:href="@{/} "> YELLOW MEN STORE</a>
                 <a class="logo-sobre-nosotros navegacion-link" th:href="@{/sobreNosotros/info}">[[#{plantilla.sobreNosotros}]]</a>
                 <ul class="menus">
+                    <a sec:authorize='!isAuthenticated()' class="nav-link" th:href="@{/login}"> <i class="fas fa-sign-in-alt"></i></a>
+                    <form sec:authorize='isAuthenticated()' method="post" th:action="@{/logout}">
+                        <button class='btn btn-dark'>
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
 
+                                </form>
                     <li class="menus-link"><a class="navegacion-link" th:href="@{/categoria/listado}">[[#{plantilla.categoria}]]</a></li>
-                    <li class="menus-link"><a class="navegacion-link" th:href="@{/categoria2/vistaCategoria}">[[#{plantilla.categoria}]]2</a></li>
-                    <li class="menus-link"><a class="navegacion-link" th:href="@{/producto/listado}">[[#{plantilla.productos}]]</a></li>
                     <li class="menus-link"><a class="navegacion-link" th:href="@{/admin/vista}">admin</a></li>
-                    <li class="menus-link"> <a class="navegacion-link" href="url"><img src="https://w7.pngwing.com/pngs/872/916/png-transparent-whatsapp-logo-whatsapp-computer-icons-telephone-call-whatsapp-grass-internet-mobile-phones-thumbnail.png" alt="alt" width="32"/></a></li>
-                    <li class="menus-link"><a class="navegacion-link" href="https://www.instagram.com/yellowmenstore/"><img src="https://w7.pngwing.com/pngs/648/943/png-transparent-instagram-logo-logo-instagram-computer-icons-camera-instagram-logo-text-trademark-magenta-thumbnail.png" alt="alt" width="32"/></a></li>
+                    <li class="menus-link"><a class="navegacion-link" href="url"><img src="https://cdn.icon-icons.com/icons2/99/PNG/512/whatsapp_socialnetwork_17360.png" alt="WhatsApp" width="32"/></a></li>
+                    <li class="menus-link"><a class="navegacion-link" href="https://www.instagram.com/yellowmenstore/"><img class="texto-amarillo" src="https://cdn.icon-icons.com/icons2/1584/PNG/512/3721672-instagram_108066.png" alt="Instagram" width="32"/></a></li>
                     <li class="menus-link"><a class="dropdown-item navegacion-link"  th:href="@{/(lang=es)}">ES</a></li>
                     <li class="menus-link"><a class="dropdown-item navegacion-link" th:href="@{/(lang=en)}">EN</a></li>
-                    
+
                 </ul>
-                
             </nav>
-            
-
-
         </header>
-        
-        
-        <!--Conseguir productos-->
-     <section  th:fragment="listaProductos">
-         <div class="listaCategoria">
-             <div th:if="${productos != null and !productos.empty}">
-                <div  th:each="p : ${productos}"> 
-                    <div>
-                        <h4>[[${p.nombreProducto}]]</h4>
-                        <img th:src="${p.rutaImagen}"  
-                             height="200" 
-                             alt="alt"/>
-                        <p>[[#{producto.talla}]]: [[${p.tallaProducto}]] <br/>
-                            [[#{producto.precio}]]: ₡[[${p.precio}]]<br/>
-                        </p>
-                        <a class="navegacion-link texto-negro" th:href="@{/producto/vista/}+${p.idProducto}">[[#{producto.vermas}]]</a>
+
+
+        <!-- Conseguir productos -->
+        <section th:fragment="listaProductos" class="productos-container">
+            <div class="listaCategoria">
+                <div th:if="${productos != null and !productos.empty}" class="producto-wrapper">
+                    <div th:each="p : ${productos}" class="producto-item">
+                        <div class="producto-content texto-amarillo">
+                            <h4>[[${p.nombreProducto}]]</h4>
+                            <img th:src="${p.rutaImagen}" height="150" alt="alt"/>
+                            <p>[[#{producto.talla}]]: [[${p.tallaProducto}]] <br/>
+                                [[#{producto.precio}]]: ₡[[${p.precio}]]</p>
+                            <a class="navegacion-link texto-amarillo" th:href="@{/producto/vista/}+${p.idProducto}">[[#{producto.vermas}]]</a>
+                            <button class="btn btn-primary texto-amarillo" style="background-color: black; border-color: black;">
+                                <i class="fas fa-cart-plus" style="color: yellow;"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-
-                 </div>
+                <!-- Rectángulos vacíos para agregar más productos -->
+                <div class="producto-placeholder"></div>
+                <div class="producto-placeholder"></div>
+                <div class="producto-placeholder"></div>
+                <!-- Puedes añadir más rectángulos vacíos según sea necesario -->
             </div>
-     </section>
-        
+        </section>
+
 
     </body>
 </html>
