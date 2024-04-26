@@ -12,6 +12,7 @@ import com.prueba_Final.service.CategoriaService;
 import com.prueba_Final.service.FirebaseStorageService;
 import com.prueba_Final.service.ProductoService;
 import com.prueba_Final.service.PromocionService;
+import com.prueba_Final.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +36,9 @@ public class VistaAdminController {
     
     @Autowired
     private PromocionService promocionService;
+    
+    @Autowired
+    private UsuarioService usuarioService;
     
     @GetMapping("/vista")
     public String listado(Model model){
@@ -130,7 +134,12 @@ public class VistaAdminController {
         promocionService.delete(promocion);
         return "redirect:/admin/vista";
     }
+      // listado usuarios
     
-      // crud usuario
-    
+    @GetMapping("/usuarios")
+    public String listadoUsuarios(Model model){
+       var lista = usuarioService.getUsuarios();
+       model.addAttribute("usuarios", lista);
+        return "/admin/usuarios";
+    }
 }

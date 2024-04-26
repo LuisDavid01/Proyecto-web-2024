@@ -15,6 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <!--Conseguir productos-->
         <section  th:fragment="tablaProductos">
+            <a th:href="@{/admin/usuarios}" sec:authorize="hasRole('ADMIN')">Ver usuarios</a>
 
             <table>
                 <thead>
@@ -23,6 +24,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <th>nombre</th>
                         <th>talla</th>
                         <th>precio</th>
+                        <th>existencias</th>
                         <th>categoria</th>
                     </tr>
 
@@ -34,6 +36,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <td>[[${producto.nombreProducto}]]</td>
                         <td>[[${producto.tallaProducto}]]</td>
                         <td>[[${producto.precio}]]</td>
+                        <td>[[${producto.existencias}]]</td>
                         <td>[[${producto.categoria.nombreCategoria}]]</td>
                         <!-- Botones crud -->
                         <td sec:authorize="hasRole('ADMIN')">
@@ -74,6 +77,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <input type="text" class="form-control" name="nombreProducto" required="true"/>
                 </div>
                 
+                 <div>
+                    <label for="existencias">existencias</label>
+                    <input type="number" class="form-control" name="existencias" required="true"/>
+                </div>
                 <div>
                     <label for="detalle">detalle</label>
                     <input type="text" class="form-control" name="detalle" required="true"/>
@@ -83,6 +90,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <label for="tallaProducto">talla</label>
                     <input type="text" class="form-control" name="tallaProducto" required="true"/>
                 </div>
+                
+               
 
 
                 <div>
@@ -123,6 +132,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 th:value="${c.idCategoria}"
                                 th:text="${c.nombreCategoria}"></option>
                     </select>
+                </div>
+                 <div>
+                    <label for="existencias">existencias</label>
+                    <input type="number" class="form-control" name="existencias" th:field="*{existencias}" required="true"/>
                 </div>
 
                 <div>
@@ -488,6 +501,50 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 
             </form>
+
+
+
+        </section>
+          
+          
+           <!--Conseguir usuarios-->
+        <section  th:fragment="tablaUsuarios" >
+            <br/>
+             <br/>
+              <br/>
+               <br/>
+                <br/>
+                 <br/>
+                  <br/>
+
+            <table>
+                <thead>
+                    <tr >
+                        <th>Username</th>
+                        <th>nombre</th>
+                        <th>apellidos</th>
+                        <th>correo</th>
+                        <th>telefono</th>
+                        <th>activo</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr   th:each="user : ${usuarios}">
+                        <!-- Detalle del producto -->
+                        <td>[[${user.username}]]</td>
+                        <td>[[${user.nombre}]]</td>
+                        <td>[[${user.apellidos}]]</td>
+                        <td>[[${user.correo}]]</td>
+                        <td>[[${user.telefono}]]</td>
+                        <td>[[${user.activo}]]</td>
+                       
+                    </tr>
+
+                </tbody>
+
+
+            </table>
 
 
 

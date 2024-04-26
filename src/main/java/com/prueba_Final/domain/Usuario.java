@@ -29,6 +29,7 @@ public class Usuario implements Serializable{
     private String correo;
     private String telefono;
     private String rutaImagen;
+    private boolean activo;
     
     @OneToMany
     @JoinColumn(name="id_usuario")
